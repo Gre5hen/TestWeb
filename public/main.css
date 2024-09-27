@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #ffffff;
+}
+
+footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+}
+
+a[href^="mailto:"]:visited {
+    color: #0000EE;
+}
+
+a[href^="https://t.me"]:visited {
+    color: #0000EE;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 200px;
+    height: 200px;
+}
+
+.about-me {
+    background-color: #000000;
+    color: #af901f;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    margin-left: 20px;
+    flex-grow: 1;
+}
+
+.all-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.content {
+    flex-grow: 1;
+    margin-left: 0;
+}
+
+.ascii-art {
+    color: #af901f;
+    width: auto;
+}
+
+.wrapper {
+    background: linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(50,23,23,1) 40%, rgba(175,144,31,1) 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+pre {
+    white-space: pre;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+nav {
+    width: 100%;
+    background-color: #321717;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 0;
+}
+
+nav ul li a {
+    color: #af901f;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
