@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Конструктор таблиц">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конструктор таблицы</title>
+    <link rel="stylesheet" href="public/tableStyle.css">
+    <script src="public/tableConstructor.js" defer></script>
+</head>
+
+<body>
+<header>
+    <h1>Конструктор таблицы</h1>
+</header>
+
+<main>
+    <form id="constructor-form">
+        <div>
+            <label for="project">Проект:</label>
+            <input type="text" id="project" name="project" required>
+        </div>
+        <div>
+            <label for="language">Язык программирования:</label>
+            <input type="text" id="language" name="language" required>
+        </div>
+        <div>
+            <label for="description">Краткое описание:</label>
+            <input type="text" id="description" name="description">
+        </div>
+        <div>
+            <label for="date">Дата последней редактуры:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        <button type="submit">Добавить в таблицу</button>
+        <button type="button" id="save-data">Сохранить данные</button>
+        <button type="button" id="load-data">Загрузить данные</button>
+    </form>
+
+    <div id="table-container"></div>
+
+    <div class="nav-container">
+        <a href="index.html" class="back-to-home">На главную страницу</a>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 Андрей Горбунов</p>
+</footer>
+</body>
+</html>

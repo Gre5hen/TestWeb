@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #000000;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    background-color: white;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#preloader {
+    font-size: 18px;
+    color: #333;
+    margin: 20px 0;
+}
+
+.user {
+    background-color: #ffffff;
+    padding: 15px;
+    margin: 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.user h3 {
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.user p {
+    margin: 5px 0;
+    color: #555;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #af901f;
+}
+
+.back-to-home {
+    display: inline-block;
+    background-color: #000000;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.back-to-home:hover {
+    background-color: #af901f;
+    transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 10px;
+    }
+
+    .user {
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
