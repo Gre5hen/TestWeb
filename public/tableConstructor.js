@@ -36,41 +36,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateTable() {
         if (tableData.length === 0) {
-            tableContainer.innerHTML = '<p>Нет данных для отображения</p>';
+            const noDataMessage = document.createElement('p');
+            noDataMessage.textContent = 'Нет данных для отображения';
+            tableContainer.appendChild(noDataMessage);
             return;
         }
 
-        tableContainer.innerHTML = `
-            <table>
-                <thead>
-                    <tr>
-                        <th>Проект</th>
-                        <th>Язык программирования</th>
-                        <th>Краткое описание</th>
-                        <th>Дата последней редактуры</th>
-                        <th>Действие</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${tableData.map((row, index) => `
-                        <tr>
-                            <td>${row.project}</td>
-                            <td>${row.language}</td>
-                            <td>${row.description || 'Не указано'}</td>
-                            <td>${row.date}</td>
-                            <td><button data-index="${index}" class="delete-row">Удалить</button></td>
-                        </tr>
-                    `).join('')}
-                </tbody>
-            </table>
-        `;
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        const headerRow = document.createElement('tr');
 
-        document.querySelectorAll('.delete-row').forEach(button => {
-            button.addEventListener('click', function () {
+        ['Проект', 'Язык программирования', 'Краткое описание', 'Дата последней редактуры', 'Действие'].forEach(text => {
+            const th = document.createElement('th');
+            th.textContent = text;
+            headerRow.appendChild(th);
+        });
+
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+        tableData.forEach((row, index) => {
+            const tr = document.createElement('tr');
+
+            const project = document.createElement('td');
+            project.textContent = row.project;
+            tr.appendChild(project);
+
+            const language = document.createElement('td');
+            language.textContent = row.language;
+            tr.appendChild(language);
+
+            const description = document.createElement('td');
+            description.textContent = row.description || 'Не указано';
+            tr.appendChild(description);
+
+            const date = document.createElement('td');
+            date.textContent = row.date;
+            tr.appendChild(date);
+
+            const action = document.createElement('td');
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Удалить';
+            deleteButton.dataset.index = index;
+            deleteButton.classList.add('delete-row');
+
+            deleteButton.addEventListener('click', function () {
                 const index = this.getAttribute('data-index');
                 tableData.splice(index, 1);
                 updateTable();
             });
+
+            action.appendChild(deleteButton);
+            tr.appendChild(action);
+
+            tbody.appendChild(tr);
         });
+
+        table.appendChild(tbody);
+        tableContainer.appendChild(table);
     }
 });
