@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateTable() {
         tableContainer.replaceChildren()
-        
+
         if (tableData.length === 0) {
             const noDataMessage = document.createElement('p');
             noDataMessage.textContent = 'Нет данных для отображения';
@@ -48,7 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const thead = document.createElement('thead');
         const headerRow = document.createElement('tr');
 
-        ['Проект', 'Язык программирования', 'Краткое описание', 'Дата последней редактуры', 'Действие'].forEach(text => {
+        const temp = ['Проект', 'Язык программирования', 'Краткое описание', 'Дата последней редактуры', 'Действие'];
+
+        temp.forEach(text => {
             const th = document.createElement('th');
             th.textContent = text;
             headerRow.appendChild(th);
@@ -84,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
             deleteButton.classList.add('delete-row');
 
             deleteButton.addEventListener('click', function () {
-                const index = this.getAttribute('data-index');
                 tableData.splice(index, 1);
                 updateTable();
             });
