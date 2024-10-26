@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateTable() {
+        tableContainer.replaceChildren()
+        
         if (tableData.length === 0) {
             const noDataMessage = document.createElement('p');
             noDataMessage.textContent = 'Нет данных для отображения';
