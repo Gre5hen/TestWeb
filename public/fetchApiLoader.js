@@ -5,13 +5,32 @@ function showUsers(users) {
     users.forEach(user => {
         const userElement = document.createElement('div');
         userElement.classList.add('user');
-        userElement.innerHTML =
-            `
-            <h3>${user.name}</h3>
-            <p><strong>Username:</strong> ${user.username}</p>
-            <p><strong>Email:</strong> ${user.email}</p>
-            <p><strong>Phone:</strong> ${user.phone}</p>
-        `;
+
+        const nameElement = document.createElement('h3');
+        nameElement.textContent = user.name;
+
+        const usernameElement = document.createElement('p');
+        const usernameLabel = document.createElement('strong');
+        usernameLabel.textContent = 'Username: ';
+        usernameElement.appendChild(usernameLabel);
+        usernameElement.append(user.username);
+
+        const emailElement = document.createElement('p');
+        const emailLabel = document.createElement('strong');
+        emailLabel.textContent = 'Email: ';
+        emailElement.appendChild(emailLabel);
+        emailElement.append(user.email);
+
+        const phoneElement = document.createElement('p');
+        const phoneLabel = document.createElement('strong');
+        phoneLabel.textContent = 'Phone: ';
+        phoneElement.appendChild(phoneLabel);
+        phoneElement.append(user.phone);
+
+        userElement.appendChild(nameElement);
+        userElement.appendChild(usernameElement);
+        userElement.appendChild(emailElement);
+        userElement.appendChild(phoneElement);
 
         userContainer.appendChild(userElement);
     });
