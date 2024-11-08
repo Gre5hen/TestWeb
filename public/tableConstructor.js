@@ -16,7 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('save-data').addEventListener('click', () => {
         localStorage.setItem('tableData', JSON.stringify(tableData));
-        alert('Данные сохранены');
+
+        // вызов окна, показывающего, что данные успешно сохранены
+        Swal.fire('Сохранено!', 'Данные успешно сохранены', 'success');
     });
 
     document.getElementById('load-data').addEventListener('click', () => {
@@ -26,7 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
             tableData = savedData;
             updateTable();
         } else {
-            alert('Нет сохраненных данных');
+            // вызов окна, показывающего, что нет сохраненных данных
+            Swal.fire('Внимание!', 'Нет сохраненных данных', 'info');
         }
     });
 
@@ -35,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateTable() {
-        tableContainer.replaceChildren()
+        tableContainer.replaceChildren();
 
         if (tableData.length === 0) {
             const noDataMessage = document.createElement('p');
@@ -48,7 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const thead = document.createElement('thead');
         const headerRow = document.createElement('tr');
 
-        const temp = ['Проект', 'Язык программирования', 'Краткое описание', 'Дата последней редактуры', 'Действие'];
+        const temp = ['Проект',
+            'Язык программирования',
+            'Краткое описание',
+            'Дата последней редактуры',
+            'Действие'];
 
         temp.forEach(text => {
             const th = document.createElement('th');
@@ -82,17 +89,31 @@ document.addEventListener('DOMContentLoaded', () => {
             const action = document.createElement('td');
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Удалить';
-            deleteButton.dataset.index = index;
             deleteButton.classList.add('delete-row');
 
             deleteButton.addEventListener('click', function () {
-                tableData.splice(index, 1);
-                updateTable();
+                //модальное окно подтверждения удаления от SweetAlert2
+                Swal.fire({
+                    title: 'Вы уверены?',
+                    text: "Удаление невозможно отменить!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#af901f',
+                    cancelButtonColor: '#000000',
+                    confirmButtonText: 'Да, удалить'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        tableData.splice(index, 1);
+                        updateTable();
+
+                        // уведмления успешного удаления
+                        Swal.fire('Удалено!', 'Запись была удалена.', 'success');
+                    }
+                });
             });
 
             action.appendChild(deleteButton);
             tr.appendChild(action);
-
             tbody.appendChild(tr);
         });
 
